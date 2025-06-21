@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>三橋貴明 - 専門市場研究週報</title>
+   <link rel="stylesheet" href="css/6.css"> 
+</head>
+<body>
+    <div class="landing-wrapper">
+        <section class="hero-zone">
+            <img src="img/1.jpg" alt="三橋貴明" class="expert-photo">
+            <h1 class="main-heading">三橋貴明の<span class="heading-highlight">LINE</span><br>「<span class="heading-highlight">専門市場研究週報を取得</span>」</h1>
+            <p class="intro-text">数字「7」を送信して、最新の産業動向解読、上場企業公開データ分析、グローバルマクロ経済観察を含む市場分析資料ライブラリをすぐに解除してください</p>
+        </section>
+
+        <main class="info-panel">
+            <h2 class="panel-title">毎週報告に含まれる内容</h2>
+            
+            <ul class="content-list">
+                <li class="list-entry">
+                    <span class="check-icon">✓</span> 人気業界速報（技術新製品、自動車販売量、小売傾向等）
+                </li>
+                <li class="list-entry">
+                    <span class="check-icon">✓</span> 上場企業注目点（売上、利益等の重要データをわかりやすく解説）
+                </li>
+                <li class="list-entry">
+                    <span class="check-icon">✓</span> 政策影響速報（日本・米国の新政策が一般投資家に与える影響）
+                </li>
+                <li class="list-entry">
+                    <span class="check-icon">✓</span> 図解市場変化（簡単なチャートで株価変動の重要要因を表示）
+                </li>
+                <li class="list-entry">
+                    <span class="check-icon">✓</span> グローバル市場連動（海外の大きな出来事が日本株式市場に与える影響）
+                </li>
+            </ul>
+
+            <div class="action-section">
+                <img src="img/2.png" alt="市場研究" class="showcase-image">
+                <button class="cta-button" onclick="oma()">すぐに参加して、最新研究方法論を確認</button>
+            </div>
+        </main>
+
+        <section class="risk-notice">
+            <div class="notice-header">
+                ⚠️ 重要リスク提示
+            </div>
+            <div class="notice-body">
+                本サービスは一般的な市場情報のみを提供し、いかなる投資アドバイスや推奨も構成しません。金融市場にはリスクが存在し、投資により元本の一部または全部を失う可能性があります。すべての表示事例は過去のデータ分析であり、将来の収益に対するいかなる保証も構成しません。投資家は自身のリスク許容能力に基づいて慎重に決断すべきです。本サービスは日本特定投資者群体に向けていません。
+            </div>
+        </section>
+
+        <footer class="footer-links">
+            <a href="privacy.html" target="_blank" class="link-item">プライバシーポリシー</a>
+            <a href="terms.html" target="_blank" class="link-item">利用規約</a>
+        </footer>
+    </div>
+
+    <button class="floating-cta" onclick="oma()">すぐに参加して、最新研究方法を確認</button>
+
+    <script>
+        function oma() {
+            console.log('LINE連携開始');
+            // LINE連携の実装
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.list-entry');
+            
+            const observerConfig = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerConfig);
+
+            fadeElements.forEach(function(element, index) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(25px)';
+                element.style.transition = 'opacity 0.6s ease ' + (index * 0.15) + 's, transform 0.6s ease ' + (index * 0.15) + 's';
+                fadeObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
